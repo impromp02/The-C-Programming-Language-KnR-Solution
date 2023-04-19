@@ -7,28 +7,29 @@ int main()
   int i, c;
   int nc[26];
 
+  for (i = 0; i < 26; ++i)
+  {
+    nc[i] = 0;
+  }
+
   while ((c = getchar()) != EOF)
   {
-    for (i = 0; i < 26; ++i)
+    if (c >= 65 && c <= 90)
     {
-      nc[i] = 0;
+      ++nc[c - 'A'];
     }
-
-    while ((c = getchar()) != EOF)
+    else if (c >= 97 && c <= 122)
     {
-      if (c >= 65 && c <= 90)
-      {
-        ++nc[c - 'A'];
-      }
-      else if (c >= 97 && c <= 122)
-      {
-        ++nc[c - 'a'];
-      }
+      ++nc[c - 'a'];
     }
   }
 
   for (i = 0; i < 26; i++)
   {
-    putchar(nc[i] + 65);
+    putchar(i + 97);
+    int j;
+    for (j = 0; j < nc[i]; j++)
+      printf("=");
+    printf("\n");
   }
 }
